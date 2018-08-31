@@ -1,0 +1,366 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>编写高质量的代码 | HPU NEW LIFE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="玄德公">
+    
+    <meta name="description" content="笔者从事开发多年，有这样一种感觉，查看一些开源项目，如Spring、Apache Common等源码是一件赏心悦目的事情，究其原因，无外两点：1）代码质量非常高；2）命名特别规范（这可能跟老外的英语水平有关）。要写高质量的代码，不是一件容易的事，需要长年累月的锻炼，是一个量变到质变的过程，但要写好命">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="HPU NEW LIFE" title="HPU NEW LIFE"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="HPU NEW LIFE">HPU NEW LIFE</a></h1>
+				<h2 class="blog-motto">认准一个方向，持续的走，所有的努力都不会白费!</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/me">关于我</a></li>
+					
+						<li><a href="/now">NowNow</a></li>
+					
+					<li>
+					
+					<form class="search" action="//baidu.com/s" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="wd" autocomplete="off" maxlength="20" placeholder="搜索" />
+                        <input name=tn type=hidden value="bds">
+                        <input name=cl type=hidden value="3">
+                        <input name=ct type=hidden value="2097152">
+						<input type="hidden" name="si" value="liupei.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/10/编写高质量的代码/" title="编写高质量的代码" itemprop="url">编写高质量的代码</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://liupei.net" title="玄德公">玄德公</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-09-10T09:05:57.000Z" itemprop="datePublished">Sep 10 2015</time>
+    更新日期:<time datetime="2018-08-23T07:50:11.608Z" itemprop="dateModified">Aug 23 2018</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+		</div>
+		
+		<div style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;"><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);">笔者从事开发多年，有这样一种感觉，查看一些开源项目，如Spring、Apache Common等源码是一件赏心悦目的事情，究其原因，无外两点：1）代码质量非常高；2）命名特别规范（这可能跟老外的英语水平有关）。</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);">要写高质量的代码，不是一件容易的事，需要长年累月的锻炼，是一个量变到质变的过程，但要写好命名，只需要有比较好的英语语法基础和一种自我意识即可轻松达到。本博文将会结合本人的开发经验，总结出若干命名规则，这些命名规则纯属个人的使用习惯，不代表是一种理想的规则，在这里列举出来，供大家交流讨论。</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><span style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; font-size: 18px;"><strong style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;">1.切忌使用没有任何意义的英语字母进行命名</strong></span></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><blockquote style="margin: 0px; padding: 0px 0px 0px 10px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; border-left-width: 3px; border-left-style: solid; border-left-color: rgb(219, 219, 219); color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">for(int i=0; i&lt;10; i++) {</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">…</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">}</p></blockquote><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);">这是在很多教Java基本语法的书上常见的代码片断，作为教学材料，这样写无可厚非，但作为真正的代码编写，程序员必须要养成良好的习惯，不要使用这种没有任何含义的命名方式，这里可以使用“index”。</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><span style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; font-size: 18px;"><strong style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;">2.切忌使用拼音，甚至是拼音首字母组合</strong></span></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><blockquote style="margin: 0px; padding: 0px 0px 0px 10px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; border-left-width: 3px; border-left-style: solid; border-left-color: rgb(219, 219, 219); color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">cishu =5;</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">// 循环的次数</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">zzje = 1000.00</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">// 转账金额</p></blockquote><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);">笔者在做代码检查的时候，无数次遇到过这样的命名，使人哭笑不得</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><strong style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"><span style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; font-size: 18px;">3.要使用英文，而且要使用准确的英语，无论是拼写还是语法</span></strong></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><ul style="margin: 0px; padding: 0px 0px 0px 30px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><li style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">名词单数，必须使用单数英文，如Account、Customer。</p></li><li style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">对于数组，列表等对象集合的命名，必须使用复数，而且最好按照英文的语法基础知识使用准确的复数形式，如 List&lt;Account&gt; accounts、Set&lt;Strategy&gt; strategies。</p></li><li style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">对于boolean值的属性，很多开发人员习惯使用isXXX，如isClose（是否关闭），但这里有两点建议：1）最好不要带“is”，因为JavaBean的规范，为属性生成get/set方法的时候，会用“get/set/is”，上面的例子，生成get/set方法就会变成“getIsClose/isIsClose/getIsClose”，非常别扭；2）由于boolean值通常反映“是否”，所以准确的用法，应该是是用“形容词”，上面的例子，最终应该被改为 closed，那么get/set方法就是“getClosed/isColsed/setClosed”，非常符合英语阅读习惯。</p></li><li style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">转载补充：推荐阅读《老码农教你学英语》、《老码农教你学英语：补充一些英语学习素材》。</p></li></ul><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><strong style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"><span style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; font-size: 18px;">4.方法名的命名，需要使用“动宾结构短语”或“是动词+表语结构短语”</span></strong></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);">笔者曾看到过千奇百怪的方法命名，有些使用名词，有些甚至是“名词+动词”，而且，如果宾语是一个对象集合，还是最好使用复数：</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><blockquote style="margin: 0px; padding: 0px 0px 0px 10px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; border-left-width: 3px; border-left-style: solid; border-left-color: rgb(219, 219, 219); color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">createOrder(Order order)</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">//good</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">orderCreate(Order order)</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">//bad</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">removeOrders(List&lt;Order&gt; orders)</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">//good</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">removeOrder(List&lt;Order&gt; order)</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">//bad</p></blockquote><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><strong style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"><span style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; font-size: 18px;">5.对于常见的“增删改查”方法，命名最好要谨慎：</span></strong></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><ul style="margin: 0px; padding: 0px 0px 0px 30px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><li style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">增加：最常见使用create和add，但最好根据英语的语义进行区分，这有助于理解，create代表创建，add代表增加。比如，要创建一个Student，用createStudent要比用addStudent好，为什么？想想如果有个类叫Clazz(班级，避开Java关键字），现在要把一个Student加入到一个Clazz，Clazz很容易就定义了一个 addStudent（Student student)的方法，那么就比较容易混淆。</p></li><li style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">修改：常见的有alter、update、modify，个人觉得modify最准确。</p></li><li style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">查询：对于获取单个对象，可以用get或load，但个人建议用get，解释请见第7点的说明，对于不分条件列举，用list，对于有条件查询，用search（最好不要用find，find在英文了强调结果，是“找到”的意思，你提供一个“查询”方法，不保证输入的条件总能“找到”结果）。</p></li><li style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">删除：常见的有delete和remove，但删除建议用delete，因为remove有“移除”的意思，参考Clazz的例子就可以理解，从班级移除一个学生，会用removeStudent。</p></li></ul><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><strong style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"><span style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; font-size: 18px;">6.宁愿方法名冗长，也不要使用让人费解的简写</span></strong></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);">笔者曾经遇到一个方法，判断“支付账户是否与收款账户相同”，结果我看到一个这样的命名：</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><blockquote style="margin: 0px; padding: 0px 0px 0px 10px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; border-left-width: 3px; border-left-style: solid; border-left-color: rgb(219, 219, 219); color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">checkIsOrderingAccCollAccSame(…)</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">// 很难理解，我马上把它改为：</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">isOrderingAccountSameAsCollectionAccount(…)</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap;">// 虽然有点长，但非常容易阅读，而且这种情况总是出现得比较少。</p></blockquote><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><strong style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"><span style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; font-size: 18px;">7.如果你在设计业务系统，最好不要使用技术化的术语去命名</span></strong></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);">笔者曾经工作的公司曾经制订这样的命名规则，接口必须要以“I”开头，数据传输对象必须以“DTO”作为后缀，数据访问对象必须以“DAO”作为后缀，领域对象必须以“DO”作为后缀，我之所以不建议这种做法，是希望设计人员从一开始就引导开发人员，要从“业务”出发考虑问题，而不要从“技术”出发。</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);">所以，接口不需要非得以“I”开头，只要其实现类以“Impl”结尾即可（注：笔者认为接口是与细节无关的，与技术无关，但实现类是实现相关的，用技术化术语无可口非），而数据传输对象，其实无非就是保存一个对象的信息，因此可以用“<strong>Info”，如CustomerInfo，领域对象本身就是业务的核心，所以还是以其真实名称出现，比如Account、Customer，至于“DAO”，这一个词来源于J2ee的设计模式，笔者在之前的项目使用“*</strong>Repository”命名，意味“***的仓库”，如AccountRepository.</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);">关于“Repository”这个词的命名，是来源于Eric Evans的《Domain-Driven Design》一书的仓库概念，Eric Evans对Repository的概念定义是：领域对象的概念性集合，个人认为这个命名非常的贴切，它让程序员完全从技术的思维中摆脱出来，站在业务的角度思考问题。说到这里，可能有人会反驳：像Spring、Hibernate这些优秀的框架，不是都在用“I”作为接口开头，用“DAO”来命名数据访问对象吗？没错！但千万别忽略了语义的上下文，Spring、Hibernate框架都是纯技术框架，我这里所说的场景是设计业务系统。</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><strong style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"><span style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; font-size: 18px;">8.成员变量不要重复类的名称</span></strong></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);">例如，很多人喜欢在Account对象的成员变量中使用accountId，accountNumber等命名，其实没有必要，想想成员变量不会鼓孤立的存在，你引用accountId，必须是account.accountId，用account.id已经足够清晰了。</p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);"><br style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important;"></p><p style="margin: 0px; padding: 0px; max-width: 100%; box-sizing: border-box !important; word-wrap: break-word !important; clear: both; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: &apos;Helvetica Neue&apos;, Helvetica, &apos;Hiragino Sans GB&apos;, &apos;Microsoft YaHei&apos;, Arial, sans-serif; font-size: 16px; line-height: 25.6000003814697px; widows: 1; background-color: rgb(255, 255, 255);">“勿以善小而不为，勿以恶小而为之”、“细节决定成败”，有太多的名言告诉我们，要注重细节。一个优秀的程序员，必须要有坚实的基础，而对于命名规则这样容易掌握的基础，我们何不现行？ <a href="http://mp.weixin.qq.com/s?__biz=MzAxNDI5NzEzNg==&amp;mid=208443062&amp;idx=1&amp;sn=e74a61cf0bf13d6c6f6d218e6d550ede&amp;scene=5&amp;srcid=4PPh8dgovCbeRR8ZNJym#rd" target="_blank" rel="noopener">http://mp.weixin.qq.com/s?__biz=MzAxNDI5NzEzNg==&amp;mid=208443062&amp;idx=1&amp;sn=e74a61cf0bf13d6c6f6d218e6d550ede&amp;scene=5&amp;srcid=4PPh8dgovCbeRR8ZNJym#rd</a></p></div><br>  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/C/">C++</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://liupei.net/2015/09/10/编写高质量的代码/" data-title="编写高质量的代码 | HPU NEW LIFE" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/09/10/给初学编程者的忠告/" title="给初学编程者的忠告">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  给初学编程者的忠告</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/09/10/windows环境变量-set使用/"  title="windows环境变量 set使用">
+ <strong>NEXT:</strong><br/> 
+ <span>windows环境变量 set使用
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/C/" title="C++">C++<sup>9</sup></a></li>
+		
+			<li><a href="/categories/养生/" title="养生">养生<sup>1</sup></a></li>
+		
+			<li><a href="/categories/写作/" title="写作">写作<sup>17</sup></a></li>
+		
+			<li><a href="/categories/心灵/" title="心灵">心灵<sup>1</sup></a></li>
+		
+			<li><a href="/categories/算法/" title="算法">算法<sup>14</sup></a></li>
+		
+			<li><a href="/categories/阅读/" title="阅读">阅读<sup>9</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/C/" title="C++">C++<sup>6</sup></a></li>
+		
+			<li><a href="/tags/JJ/" title="JJ">JJ<sup>3</sup></a></li>
+		
+			<li><a href="/tags/MATLAB/" title="MATLAB">MATLAB<sup>2</sup></a></li>
+		
+			<li><a href="/tags/PC-MAC-LINUX/" title="PC/MAC/LINUX">PC/MAC/LINUX<sup>1</sup></a></li>
+		
+			<li><a href="/tags/PP/" title="PP">PP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/交流/" title="交流">交流<sup>9</sup></a></li>
+		
+			<li><a href="/tags/效率/" title="效率">效率<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">9</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>	  
+    </ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wizicer/iceman" target="_blank" title="Iceman">Iceman</a> © 2018 
+		
+		<a href="http://liupei.net" target="_blank" title="玄德公">玄德公</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+

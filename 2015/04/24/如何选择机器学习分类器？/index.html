@@ -1,0 +1,366 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>如何选择机器学习分类器？ | HPU NEW LIFE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="玄德公">
+    
+    <meta name="description" content="你知道如何为你的分类问题选择合适的机器学习算法吗？当然，如果你真正关心准确率，那么最佳方法是测试各种不同的算法（同时还要确保对每个算法测试不同参数），然后通过交叉验证选择最好的一个。但是，如果你只是为你的问题寻找一个“足够好”的算法，或者一个起点，这里有一些我这些年发现的还不错的一般准则。　　你的训">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="HPU NEW LIFE" title="HPU NEW LIFE"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="HPU NEW LIFE">HPU NEW LIFE</a></h1>
+				<h2 class="blog-motto">认准一个方向，持续的走，所有的努力都不会白费!</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/me">关于我</a></li>
+					
+						<li><a href="/now">NowNow</a></li>
+					
+					<li>
+					
+					<form class="search" action="//baidu.com/s" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="wd" autocomplete="off" maxlength="20" placeholder="搜索" />
+                        <input name=tn type=hidden value="bds">
+                        <input name=cl type=hidden value="3">
+                        <input name=ct type=hidden value="2097152">
+						<input type="hidden" name="si" value="liupei.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/04/24/如何选择机器学习分类器？/" title="如何选择机器学习分类器？" itemprop="url">如何选择机器学习分类器？</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://liupei.net" title="玄德公">玄德公</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-04-24T09:36:45.000Z" itemprop="datePublished">Apr 24 2015</time>
+    更新日期:<time datetime="2018-08-23T07:50:11.968Z" itemprop="dateModified">Aug 23 2018</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+		</div>
+		
+		<div><br><div style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;"><br><p style="max-width: 100%; word-wrap: normal; box-sizing: border-box !important; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.6000003814697px; orphans: auto; text-align: start; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-indent: 28px; background-color: rgb(255, 255, 255);"><span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">你知道如何为你的分类问题选择合适的机器学习算法吗？当然，如果你真正关心准确率，那么最佳方法是测试各种不同的算法（同时还要确保对每个算法测试不同参数），然后通过交叉验证选择最好的一个。但是，如果你只是为你的问题寻找一个“足够好”的算法，或者一个起点，这里有一些我这些年发现的还不错的一般准则。</span></p><br><p style="max-width: 100%; word-wrap: normal; box-sizing: border-box !important; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.6000003814697px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);"><strong style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;"><span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">　　你的训练集有多大？</span></strong></p><br><p style="max-width: 100%; word-wrap: normal; box-sizing: border-box !important; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.6000003814697px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);"><span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">　　如果训练集很小，那么高偏差</span>/<span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">低方差分类器（如朴素贝叶斯分类器）要优于低偏差</span>/<span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">高方差分类器（如</span>k<span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">近邻分类器），因为后者容易过拟合。然而，随着训练集的增大，低偏差</span>/<span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">高方差分类器将开始胜出（它们具有较低的渐近误差），因为高偏差分类器不足以提供准确的模型。</span></p><br><p style="max-width: 100%; word-wrap: normal; box-sizing: border-box !important; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.6000003814697px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);"><span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">　　你也可以认为这是生成模型与判别模型的区别。</span></p><br><p style="max-width: 100%; word-wrap: normal; box-sizing: border-box !important; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.6000003814697px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);"><span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">　<strong style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;">　一些特定算法的优点</strong></span></p><br><p style="max-width: 100%; word-wrap: normal; box-sizing: border-box !important; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.6000003814697px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);"><span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">　　<strong style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;">朴素贝叶斯的优点：</strong>超级简单，你只是在做一串计算。如果朴素贝叶斯（</span>NB<span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">）条件独立性假设成立，相比于逻辑回归这类的判别模型，朴素贝叶斯分类器将收敛得更快，所以你只需要较小的训练集。而且，即使</span> NB <span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">假设不成立，朴素贝叶斯分类器在实践方面仍然表现很好。如果想得到简单快捷的执行效果，这将是个好的选择。它的主要缺点是，不能学习特征之间的相互作用（比如，它不能学习出：虽然你喜欢布拉德·皮特和汤姆·克鲁斯的电影，但却不喜欢他们一起合作的电影）。</span></p><br><p style="max-width: 100%; word-wrap: normal; box-sizing: border-box !important; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.6000003814697px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);"><span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">　　<strong style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;">逻辑回归的优点</strong>：有许多正则化模型的方法，你不需要像在朴素贝叶斯分类器中那样担心特征间的相互关联性。与决策树和支撑向量机不同，你还可以有一个很好的概率解释，并能容易地更新模型来吸收新数据（使用一个在线梯度下降方法）。如果你想要一个概率框架（比如，简单地调整分类阈值，说出什么时候是不太确定的，或者获得置信区间），或你期望未来接收更多想要快速并入模型中的训练数据，就选择逻辑回归。</span></p><br><p style="max-width: 100%; word-wrap: normal; box-sizing: border-box !important; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.6000003814697px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);"><span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">　　<strong style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;">决策树的优点：</strong>易于说明和解释（对某些人来说—我不确定自己是否属于这个阵营）。它们可以很容易地处理特征间的相互作用，并且是非参数化的，所以你不用担心异常值或者数据是否线性可分（比如，决策树可以很容易地某特征</span>x<span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">的低端是类</span>A<span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">，中间是类</span>B<span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">，然后高端又是类</span>A<span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">的情况）。一个缺点是，不支持在线学习，所以当有新样本时，你将不得不重建决策树。另一个缺点是，容易过拟合，但这也正是诸如随机森林（或提高树）之类的集成方法的切入点。另外，随机森林往往是很多分类问题的赢家（我相信通常略优于支持向量机），它们快速并且可扩展，同时你不须担心要像支持向量机那样调一堆参数，所以它们最近似乎相当受欢迎。</span></p><br><p style="max-width: 100%; word-wrap: normal; box-sizing: border-box !important; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.6000003814697px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);"><strong style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;">SVMs <span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">的优点：</span></strong><span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">高准确率，为过拟合提供了好的理论保证，并且即使你的数据在基础特征空间线性不可分，只要选定一个恰当的核函数，它们仍然能够取得很好的分类效果。它们在超高维空间是常态的文本分类问题中尤其受欢迎。然而，它们内存消耗大，难于解释，运行和调参也有些烦人，因此，我认为随机森林正渐渐开始偷走它的“王冠”。</span></p><br><p style="max-width: 100%; word-wrap: normal; box-sizing: border-box !important; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.6000003814697px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);"><span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">　<strong style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important;">　然而…</strong></span></p><br><p style="max-width: 100%; word-wrap: normal; box-sizing: border-box !important; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.6000003814697px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);"><span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">　　尽管如此，回忆一下，更好的数据往往打败更好的算法，设计好的特征大有裨益。并且，如果你有一个庞大数据集，这时你使用哪种分类算法在分类性能方面可能并不要紧（所以，要基于速度和易用性选择算法）。</span></p><br><p style="max-width: 100%; word-wrap: normal; box-sizing: border-box !important; min-height: 1em; white-space: pre-wrap; color: rgb(62, 62, 62); font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25.6000003814697px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(255, 255, 255);"><span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">　　重申我上面说的，如果你真的关心准确率，一定要尝试各种各样的分类器，并通过交叉验证选择最好的一个。或者，从</span> Netflix Prize (<span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">和</span> Middle Earth)<span style="max-width: 100%; word-wrap: break-word !important; box-sizing: border-box !important; font-family: 宋体;">中吸取教训，只使用了一个集成方法进行选择。</span></p><br></div><br></div>  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://liupei.net/2015/04/24/如何选择机器学习分类器？/" data-title="如何选择机器学习分类器？ | HPU NEW LIFE" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/04/24/机器学习的最佳入门学习资源/" title="机器学习的最佳入门学习资源">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  机器学习的最佳入门学习资源</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/04/24/统计学和机器学习不能分开/"  title="统计学和机器学习不能分开">
+ <strong>NEXT:</strong><br/> 
+ <span>统计学和机器学习不能分开
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/C/" title="C++">C++<sup>9</sup></a></li>
+		
+			<li><a href="/categories/养生/" title="养生">养生<sup>1</sup></a></li>
+		
+			<li><a href="/categories/写作/" title="写作">写作<sup>17</sup></a></li>
+		
+			<li><a href="/categories/心灵/" title="心灵">心灵<sup>1</sup></a></li>
+		
+			<li><a href="/categories/算法/" title="算法">算法<sup>14</sup></a></li>
+		
+			<li><a href="/categories/阅读/" title="阅读">阅读<sup>9</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/C/" title="C++">C++<sup>6</sup></a></li>
+		
+			<li><a href="/tags/JJ/" title="JJ">JJ<sup>3</sup></a></li>
+		
+			<li><a href="/tags/MATLAB/" title="MATLAB">MATLAB<sup>2</sup></a></li>
+		
+			<li><a href="/tags/PC-MAC-LINUX/" title="PC/MAC/LINUX">PC/MAC/LINUX<sup>1</sup></a></li>
+		
+			<li><a href="/tags/PP/" title="PP">PP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/交流/" title="交流">交流<sup>9</sup></a></li>
+		
+			<li><a href="/tags/效率/" title="效率">效率<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">9</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>	  
+    </ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wizicer/iceman" target="_blank" title="Iceman">Iceman</a> © 2018 
+		
+		<a href="http://liupei.net" target="_blank" title="玄德公">玄德公</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+

@@ -1,0 +1,366 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>关于头文件 | HPU NEW LIFE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="玄德公">
+    
+    <meta name="description" content="eclipse配置 http://blog.csdn.net/wangxueang224/article/details/93667311.     定义函数必须指定四个元素：返回类型、函数名、圆括号里面的形参（可能为空）和函数体（以花括号开始并以花括号结束的语句块）。2.     main函数的返">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="HPU NEW LIFE" title="HPU NEW LIFE"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="HPU NEW LIFE">HPU NEW LIFE</a></h1>
+				<h2 class="blog-motto">认准一个方向，持续的走，所有的努力都不会白费!</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/me">关于我</a></li>
+					
+						<li><a href="/now">NowNow</a></li>
+					
+					<li>
+					
+					<form class="search" action="//baidu.com/s" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="wd" autocomplete="off" maxlength="20" placeholder="搜索" />
+                        <input name=tn type=hidden value="bds">
+                        <input name=cl type=hidden value="3">
+                        <input name=ct type=hidden value="2097152">
+						<input type="hidden" name="si" value="liupei.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/10/关于头文件/" title="关于头文件" itemprop="url">关于头文件</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://liupei.net" title="玄德公">玄德公</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-09-10T09:09:56.000Z" itemprop="datePublished">Sep 10 2015</time>
+    更新日期:<time datetime="2018-08-23T07:50:10.921Z" itemprop="dateModified">Aug 23 2018</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+		</div>
+		
+		<div style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;"><br><div>eclipse配置 <a href="http://blog.csdn.net/wangxueang224/article/details/9366731" target="_blank" rel="noopener">http://blog.csdn.net/wangxueang224/article/details/9366731</a></div><br><div><br></div><br><div>1.     定义函数必须指定四个元素：返回类型、函数名、圆括号里面的形参（可能为空）和函数体（以花括号开始并以花括号结束的语句块）。</div><br><div>2.     main函数的返回值是一个状态指示器，通常返回0，表示main函数成功执行完毕。<br clear="none"><br>3.     大多数情况下学习语言之前要先学习IDE，其实从简单的命令行开始学习可能更容易些。<br clear="none"><br>4.     源文件由文件名和文件后缀组成。<br clear="none"></div><br><div><br clear="none"></div><br><div><span style="color: #444444; font-size: 12px; text-align: left; background-color: #ffffff;">C++用命名空间来管理类，函数，以及其他的成员。</span><br clear="none" style="color: #444444; font-size: 12px; text-align: left; background-color: #ffffff;"><br><span style="color: #444444; font-size: 12px; text-align: left; background-color: #ffffff;">using namespace std;是使用标准命名空间下的成员。</span></div><br><div><span style="color: #444444; font-size: 12px; text-align: left; background-color: #ffffff;"><br clear="none"></span></div><br><div><strong><span style="color: #444444; font-size: 12px; text-align: left; background-color: #ffffff;">如果采用VC++6.0现在学习編程序会不会有点out了呢？</span></strong></div><br><div><strong><span style="color: #444444; font-size: 12px; text-align: left; background-color: #ffffff;">也不会。不过会遇到一些障碍，比如Win7可能不能很好地运行VC6，然后VC6里的C++与C++的标准的距离比较远，有些东西甚至可能是相反的。</span></strong></div><br><div><br clear="none"></div><br><div><br clear="none"></div><br><div><strong>main.cpp是怎么知道ticketmachine.cpp中对类的定义的？</strong><br clear="none"></div><br><div><strong>知道是通过头文件，使用是通过链接</strong></div><br><div><strong><br clear="none"></strong></div><br><div><strong>表示用命令运行，对不熟悉Linux和Mac的人来说，很困难，所以还是用eclipse编译器好。</strong></div><br><div><strong>但是要真正了解编译、链接过程，还是命令行运行更直观。用IDE不太好讲清楚，有时候太自动化的东西忽视了很多内在的细节，受益匪浅！IDE帮我们做的事情太多了，命令行则不会。初学者可以用IDE，进阶以后就可以用命令行了解深层的东西了。</strong></div><br><div><strong>u@macbook c++$ more a.h</strong><br><div><strong><font color="#1C39F6">void f();           //declaration</font></strong></div><br><div><strong><font color="#1C39F6">int global;      //</font><font color="#FF1F17">definition</font></strong></div><br><div><strong>u@macbook c++$ more a.cpp</strong></div><br><div><strong><font color="#1C39F6">#include &quot;a.h&quot;</font></strong></div><br><div><strong><font color="#1C39F6">int main(){</font></strong></div><br><div><strong><font color="#1C39F6">        return 0;</font></strong></div><br><div><strong><font color="#1C39F6">}</font></strong></div><br></div><br><div><strong>u@macbook c++$ cpp a.cpp</strong><br><div><strong><font color="#1C39F6"># 1 &quot;a.cpp&quot;</font></strong></div><br><div><strong><font color="#1C39F6"># 1 &quot;&lt;built-in&gt;&quot;</font></strong></div><br><div><strong><font color="#1C39F6"># 1 &quot;&lt;command-line&gt;&quot;</font></strong></div><br><div><strong><font color="#1C39F6"># 1 &quot;a.cpp&quot;</font></strong></div><br><div><strong><font color="#1C39F6"># 1 &quot;a.h&quot; 1</font></strong></div><br><div><strong><font color="#1C39F6">void f();</font></strong></div><br><div><strong><font color="#1C39F6"><br></font></strong></div><br><div><strong><font color="#1C39F6">int global;</font></strong></div><br><div><strong><font color="#1C39F6"># 2 &quot;a.cpp&quot; 2</font></strong></div><br><div><strong><font color="#1C39F6">int main(){</font></strong></div><br><div><strong><font color="#1C39F6">     return 0;</font></strong></div><br><div><strong><font color="#1C39F6">}</font></strong></div><br><div><strong>u@macbook c++$ g++ a.cpp –save-temps</strong><br><div><strong>u@macbook c++$ ls -l</strong></div><br></div><br><div><strong><font color="#1C39F6">-rw-r–r–  1 u  staff    40  8 11 11:17 a.cpp</font></strong></div><br><div><strong><font color="#1C39F6">-rw-r–r–  1 u  staff    23  8 11 19:08 a.h</font></strong></div><br><div><strong><font color="#1C39F6">-rw-r–r–  1 u  staff   136  8 11 19:40 a.ii</font></strong></div><br><div><strong><font color="#1C39F6">-rw-r–r–  1 u  staff  1144  8 11 19:40 a.s</font></strong></div><br><div><strong><font color="#1C39F6">-rw-r–r–  1 u  staff   660  8 11 19:40 a.o</font></strong></div><br><div><strong><font color="#1C39F6">-rwxr-xr-x  1 u  staff  8680  8 11 19:40 a.out</font></strong></div><br><div><strong><font color="#1C39F6">ii编译预处理指令结束之后的结果</font></strong></div><br><div><strong><font color="#1C39F6">s汇编代码</font></strong></div><br><div><strong><font color="#1C39F6">o目标代码</font></strong></div><br><div><strong><font color="#1C39F6">out最终可执行的程序</font></strong></div><br><div><strong>u@macbook c++$ more a.ii</strong><br><div><strong><font color="#1C39F6"># 1 &quot;a.cpp&quot;</font></strong></div><br><div><strong><font color="#1C39F6"># 1 &quot;&lt;built-in&gt;&quot;</font></strong></div><br><div><strong><font color="#1C39F6"># 1 &quot;&lt;command-line&gt;&quot;</font></strong></div><br><div><strong><font color="#1C39F6"># 1 &quot;a.cpp&quot;</font></strong></div><br><div><strong><font color="#1C39F6"># 1 &quot;a.h&quot; 1</font></strong></div><br><div><strong><font color="#1C39F6">void f();</font></strong></div><br><div><strong><font color="#1C39F6"><br></font></strong></div><br><div><strong><font color="#1C39F6">int global;</font></strong></div><br><div><strong><font color="#1C39F6"># 2 &quot;a.cpp&quot; 2</font></strong></div><br><div><strong><font color="#1C39F6">int main(){</font></strong></div><br><div><strong><font color="#1C39F6"> return 0;</font></strong></div><br><div><strong><font color="#1C39F6">}</font></strong></div><br></div><br><div><strong>编译器拿到的是这样一个文件，经过编译预处理指令把头文件超进来，形成一个大的文件，这个大的文件拿给C++编译器做编译，所以include做的就是文本的插入</strong></div><br><div style="display: inline !important;"><strong><img src="VC面向对象程序设计_files/屏幕快照 2014-08-11 下午7.55.03.png" type="image/png" height="463" style="cursor: default; height: auto;" width="633"></strong></div><br><div><strong>u@macbook c++$ more b.cpp</strong><br><div><strong><font color="#1C39F6">#include &quot;a.h&quot;</font></strong></div><br><div><strong><font color="#1C39F6"><br></font></strong></div><br><div><strong><font color="#1C39F6">void f(){</font></strong></div><br><div><strong><font color="#1C39F6">}</font></strong></div><br><div><strong>u@macbook c++$ g++ a.cpp b.cpp</strong></div><br><div><strong><font color="#1C39F6">duplicate symbol _global in:</font></strong></div><br><div><strong><font color="#1C39F6">    /var/folders/x6/_8nknfgs6px6s20_n2qq4hq40000gn/T//ccKZiIGm.o</font></strong></div><br><div><strong><font color="#1C39F6">    /var/folders/x6/_8nknfgs6px6s20_n2qq4hq40000gn/T//ccjzfGwP.o</font></strong></div><br><div><strong><font color="#1C39F6">ld: 1 duplicate symbol for architecture x86_64</font></strong></div><br><div><strong><font color="#1C39F6">collect2: ld returned 1 exit status</font></strong></div><br><div><strong>u@macbook c++$ g++ a.cpp b.cpp –save-temps</strong><br><div style="color: rgb(28, 57, 246);"><strong>duplicate symbol _global in:</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>    a.o</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>    b.o</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>ld: 1 duplicate symbol for architecture x86_64</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>collect2: ld returned 1 exit status</strong></div><br></div><br><div><strong>u@macbook c++$ ls -l</strong></div><br><div><strong><font color="#1C39F6">-rw-r–r–  1 u  staff    40  8 11 11:17 a.cpp</font></strong></div><br><div><strong><font color="#1C39F6">-rw-r–r–  1 u  staff    23  8 11 19:08 a.h</font></strong></div><br><div><strong><font color="#1C39F6">-rw-r–r–  1 u  staff   136  8 11 20:19 a.ii</font></strong></div><br><div><strong><font color="#1C39F6">-rw-r–r–  1 u  staff   660  8 11 20:19 a.o</font></strong></div><br><div><strong><font color="#1C39F6">-rw-r–r–  1 u  staff  1144  8 11 20:19 a.s</font></strong></div><br><div><strong><font color="#1C39F6">-rw-r–r–  1 u  staff    29  8 11 20:01 b.cpp</font></strong></div><br><div><strong><font color="#1C39F6">-rw-r–r–  1 u  staff   124  8 11 20:19 b.ii</font></strong></div><br><div><strong><font color="#1C39F6">-rw-r–r–  1 u  staff   644  8 11 20:19 b.o</font></strong></div><br><div><strong><font color="#1C39F6">-rw-r–r–  1 u  staff  1066  8 11 20:19 b.s</font></strong></div><br><div><strong><font color="#1C39F6">有.ii说明编译预处理已经过了，有.o说明编译已经完成了，.CPP已经编译得到了它对应的.O文件编译已经完成了，接下来要做的事情是（我们知道编译的顺序是.CPP-&gt;.II-&gt;.S-&gt;.O-&gt;.OUT，有一个编译预处理指令把它变成了.II，有一个编译器把它变成了.S，有一个汇编器把.S变成了.O，连汇编都做完了，到最后一步要把A.O和B.O联在一起，生成A.OUT的时候出错了，这个事情是由谁在做呢就是这个ld（linked）这是连接器，它在连接的时候发现在A.O和B.O里面都有一个叫做global的东西是重名的，这个是不可以的）</font></strong></div><br><div><strong>u@macbook c++$ more a.ii</strong><br><div style="color: rgb(28, 57, 246);"><strong># 1 &quot;a.cpp&quot;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong># 1 &quot;&lt;built-in&gt;&quot;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong># 1 &quot;&lt;command-line&gt;&quot;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong># 1 &quot;a.cpp&quot;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong># 1 &quot;a.h&quot; 1</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>void f();</strong></div><br><div style="color: rgb(28, 57, 246);"><strong><br></strong></div><br><div><strong><font color="#FF1F17">int global;</font></strong></div><br><div style="color: rgb(28, 57, 246);"><strong># 2 &quot;a.cpp&quot; 2</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>int main(){</strong></div><br><div style="color: rgb(28, 57, 246);"><strong> return 0;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>}</strong></div><br><div><strong>u@macbook c++$ more b.ii</strong></div><br><div style="color: rgb(28, 57, 246);"><strong># 1 &quot;b.cpp&quot;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong># 1 &quot;&lt;built-in&gt;&quot;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong># 1 &quot;&lt;command-line&gt;&quot;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong># 1 &quot;b.cpp&quot;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong># 1 &quot;a.h&quot; 1</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>void f();</strong></div><br><div style="color: rgb(28, 57, 246);"><strong><br></strong></div><br><div><strong><font color="#FF1F17">int global;</font></strong></div><br><div style="color: rgb(28, 57, 246);"><strong># 2 &quot;b.cpp&quot; 2</strong></div><br><div style="color: rgb(28, 57, 246);"><strong><br></strong></div><br><div style="color: rgb(28, 57, 246);"><strong>void f(){</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>}</strong></div><br></div><br><div style="color: rgb(28, 57, 246);"><strong>可以看出来编译的时候是没有问题的，编译的时候为什么没有问题？大家都知道编译器在编译的时候都是针对一个编译单元的，就是针对一个源代码文件来进行编译的，它在编译a.cpp的时候它不知道还有b.cpp存在，在编译b.cpp的时候也不知道a.cpp的存在，它只针对一个c++单元进行编译编译完之后当然没有问题，在它一个里面是正确的，但是想把他们放在一起的时候出现问题了</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>我们怎么避免这个问题呢？</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>我们需要把definition变成declaration，怎么设置一个全局变量的declaration呢，需要一个关键词extern</strong></div><br><div><strong>u@macbook c++$ more a.h</strong><br><div style="color: rgb(28, 57, 246);"><strong>void f();</strong></div><br><div style="color: rgb(28, 57, 246);"><strong><br></strong></div><br><div style="color: rgb(28, 57, 246);"><strong>extern int global;</strong></div><br></div><br><div><strong>u@macbook c++$ more a.cpp</strong><br><div style="color: rgb(28, 57, 246);"><strong>#include &quot;a.h&quot;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>int main(){</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>        return 0;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>}</strong></div><br><div><strong>u@macbook c++$ more b.cpp</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>#include &quot;a.h&quot;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong><br></strong></div><br><div style="color: rgb(28, 57, 246);"><strong>void f(){</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>  global ++;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>}</strong></div><br><div style="color: rgb(28, 57, 246);"><strong><br></strong></div><br><div><strong>u@macbook c++$ g++ a.cpp b.cpp –save-temps</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>Undefined symbols for architecture x86_64:</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>  &quot;_global&quot;, referenced from:</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>      f()    in b.o</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>ld: symbol(s) not found for architecture x86_64</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>collect2: ld returned 1 exit status</strong></div><br></div><br><div><strong>有问题的地方，在b.cpp中定义没有赋值依然可以编译通过，但按照老师讲的是是由</strong></div><br><div><strong>u@macbook c++$ more a.h</strong><br><div style="color: rgb(28, 57, 246);"><strong>void f();</strong></div><br><div style="color: rgb(28, 57, 246);"><strong><br></strong></div><br><div style="color: rgb(28, 57, 246);"><strong>extern int global;</strong></div><br><div><strong>u@macbook c++$ more b.cpp</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>#include &quot;a.h&quot;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong><br></strong></div><br><div style="color: rgb(28, 57, 246);"><strong>int global;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong><br></strong></div><br><div style="color: rgb(28, 57, 246);"><strong>void f(){</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>  global ++;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>}</strong></div><br><div style="color: rgb(28, 57, 246);"><strong><br></strong></div><br><div><strong>u@macbook c++$ more a.cpp</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>#include &quot;a.h&quot;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>int main(){</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>        return 0;</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>}</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>u@macbook c++$ g++ a.cpp b.cpp –save-temps</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>u@macbook c++$ g++ a.cpp b.cpp –save-temps -Wall</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>u@macbook c++$</strong></div><br><div style="color: rgb(28, 57, 246);"><strong> </strong></div><br></div><br><div><strong>declaration VS. definition</strong></div><br><div><strong>在C++中，</strong></div><br><div><strong><font color="#1C39F6">1.一个.CPP文件就是一个编译单元，</font></strong></div><br><div><strong><font color="#1C39F6">2.只有declaration声明允许被放在.H文件中</font></strong></div><br><div><strong><font color="#1C39F6">   包括extern变量、函数原型、类/结构体声明</font></strong></div><br><div><strong>关于#include</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>作用：在需要的地方插入include的内容</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>1.#include “xx.h”,现在当前目录寻找，然后指定指定目录</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>2.#include &lt;xx.h&gt;，在指定目录搜索</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>标准头文件</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>#ifndef _MY_H_</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>#define _MY_H_</strong></div><br><div style="color: rgb(28, 57, 246);"><strong><br></strong></div><br><div style="color: rgb(28, 57, 246);"><strong>#endif /<em> _MY_H_ </em>/</strong></div><br><div style="color: rgb(28, 57, 246);"><strong>我们修改a.h如下：</strong></div><br><div style="color: rgb(28, 57, 246);">C:\Users\u\Desktop\a&gt;ty<br><br>#define _MY_H_<br><br><br><br>#ifndef _MY_H_<br><br>#define _MY_H_<br><br>void f();<br><br>extern int global;<br><br><br><br>#endif //define _MY_H_</div><br><div style="color: rgb(28, 57, 246);">重新编译，不链接，如下：</div><br><div><font color="#1C39F6">C:\Users\u\Desktop\a&gt;g++ a.cpp –save-temps -c</font><br><br><br><br><font color="#1C39F6">C:\Users\u\Desktop\a&gt;type a.ii</font><br><br><font color="#1C39F6"># 1 &quot;a.cpp&quot;</font><br><br><font color="#1C39F6"># 1 &quot;&lt;command-line&gt;&quot;</font><br><br><font color="#1C39F6"># 1 &quot;a.cpp&quot;</font><br><br><font color="#FF4635"># 1 &quot;a.h&quot; 1</font><br><br><font color="#1C39F6"># 2 &quot;a.cpp&quot; 2</font><br><br><font color="#1C39F6">int main(){</font><br><br><font color="#1C39F6">return 0;</font><br><br><font color="#1C39F6">}</font></div><br><div style="color: rgb(28, 57, 246);">可以看出来a.ii里面没有a.h的内容，好像没来过一样，其实是有痕迹的，这样做比较极端，我们再改一下a.h如下</div><br><div style="color: rgb(28, 57, 246);">C:\Users\u\Desktop\a&gt;type a.h<br><br>#ifndef _MY_H_<br><br>#define _MY_H_<br><br>void f();<br><br>extern int global;<br><br><br><br>#endif //define _MY_H_</div><br><div style="color: rgb(28, 57, 246);">重新编译可以看出来，是有a.h的内容的</div><br><div><font color="#1C39F6">C:\Users\u\Desktop\a&gt;g++ a.cpp –save-temps -c</font><br><br><br><br><font color="#1C39F6">C:\Users\u\Desktop\a&gt;type a.ii</font><br><br><font color="#1C39F6"># 1 &quot;a.cpp&quot;</font><br><br><font color="#1C39F6"># 1 &quot;&lt;command-line&gt;&quot;</font><br><br><font color="#1C39F6"># 1 &quot;a.cpp&quot;</font><br><br><font color="#1C39F6"># 1 &quot;a.h&quot; 1</font><br><br><br><br><br><br><font color="#FF4635">void f();<br><br>extern int global;</font><br><br><font color="#1C39F6"># 2 &quot;a.cpp&quot; 2</font><br><br><font color="#1C39F6">int main(){</font><br><br><font color="#1C39F6">return 0;</font><br><br><font color="#1C39F6">}</font></div><br><div style="color: rgb(28, 57, 246);">接下来我们改一下a.cpp，成这样子</div><br><div style="color: rgb(28, 57, 246);">C:\Users\u\Desktop\a&gt;type a.cpp<br><br>#define _MY_H_<br><br><br><br>#include &quot;a.h&quot;<br><br>int main(){<br><br>        return 0;<br><br>}</div><br><div style="color: rgb(28, 57, 246);">对于这个.cpp来说define的内容是存在的，因此条件编译就会把那几行给拿走，我们来试一下</div><br><div style="color: rgb(28, 57, 246);">C:\Users\u\Desktop\a&gt;g++ a.cpp –save-temps -c<br><br><br><br>C:\Users\u\Desktop\a&gt;type a.ii<br><br># 1 &quot;a.cpp&quot;<br><br># 1 &quot;&lt;command-line&gt;&quot;<br><br># 1 &quot;a.cpp&quot;<br><br><br><br><br><br># 1 &quot;a.h&quot; 1<br><br># 4 &quot;a.cpp&quot; 2<br><br>int main(){<br><br>return 0;<br><br>}</div><br><div style="color: rgb(28, 57, 246);">没有了吧，有a.h但是那两行（a.h的内容）没有了。我们还可以做一件事情让那两行不出现，我们把a.cpp中#defien的内容去掉，编译的时候这样编译：</div><br><div>C:\Users\u\Desktop\a&gt;g++ a.cpp –save-temps -c -D_MY_H_<br><br><br><br>C:\Users\u\Desktop\a&gt;type a.ii<br><br><font color="#1C39F6"># 1 &quot;a.cpp&quot;</font><br><br><font color="#1C39F6"># 1 &quot;&lt;command-line&gt;&quot;</font><br><br><font color="#1C39F6"># 1 &quot;a.cpp&quot;</font><br><br><font color="#1C39F6"># 1 &quot;a.h&quot; 1</font><br><br><font color="#1C39F6"># 2 &quot;a.cpp&quot; 2</font><br><br><font color="#1C39F6">int main(){</font><br><br><font color="#1C39F6">return 0;</font><br><br><font color="#1C39F6">}</font></div><br><div style="color: rgb(28, 57, 246);">这种编译时告诉编译器所有的编译都带着_MY_H_这个宏，所以所有的选项中有这个条件就起作用。好，现在我们已经认识到宏条件编译起的什么作用。我们看这么一个例子，去掉宏，在a.h中添加个类 class A;添加个b.h在b.h中声明全局变量extern A a;</div><br><div>C:\Users\u\Desktop\a&gt;type a.h<br><br><font color="#1C39F6">void f();</font><br><br><font color="#1C39F6">extern int global;</font><br><br><br><br><font color="#1C39F6">class A{};</font><br><br>C:\Users\u\Desktop\a&gt;type b.h<br><br><font color="#1C39F6">#include &quot;a.h&quot;</font><br><br><br><br><font color="#1C39F6">extern A a;</font></div><br><div style="color: rgb(28, 57, 246);">修改a.cpp如下：</div><br><div>C:\Users\u\Desktop\a&gt;type a.cpp<br><br><font color="#1C39F6">#include &quot;a.h&quot;</font><br><br><font color="#1C39F6">#include &quot;b.h&quot;</font><br><br><font color="#1C39F6">int main(){</font><br><br><font color="#1C39F6">        A a;</font><br><br><font color="#1C39F6">        return 0;</font><br><br><font color="#1C39F6">}</font></div><br><div style="color: rgb(28, 57, 246);"><br></div><br><div>C:\Users\u\Desktop\a&gt;g++ a.cpp<br><br><font color="#1C39F6">In file included from b.h:1:0,</font><br><br><font color="#1C39F6">                 from a.cpp:2:</font><br><br><font color="#1C39F6">a.h:4:7: error: redefinition of ‘class A’</font><br><br><font color="#1C39F6">In file included from a.cpp:1:0:</font><br><br><font color="#1C39F6">a.h:4:7: error: previous definition of ‘class A’</font><br><br>C:\Users\u\Desktop\a&gt;g++ a.cpp –save-temps<br><br><font color="#2D4FC9">In file included from b.h:1:0,<br><br>                 from a.cpp:2:<br><br>a.h:4:7: error: redefinition of ‘class A’<br><br>In file included from a.cpp:1:0:<br><br>a.h:4:7: error: previous definition of ‘class A’</font></div><br><div>C:\Users\u\Desktop\a&gt;type a.ii<br><br><font color="#2D4FC9"># 1 &quot;a.cpp&quot;</font><br><br><font color="#2D4FC9"># 1 &quot;&lt;command-line&gt;&quot;</font><br><br><font color="#2D4FC9"># 1 &quot;a.cpp&quot;</font><br><br><font color="#2D4FC9"># 1 &quot;a.h&quot; 1</font><br><br><font color="#2D4FC9">void f();</font><br><br><font color="#2D4FC9">extern int global;</font><br><br><br><br><font color="#FF4635">class A{};</font><br><br><font color="#2D4FC9"># 2 &quot;a.cpp&quot; 2</font><br><br><font color="#2D4FC9"># 1 &quot;b.h&quot; 1</font><br><br><i><font color="#2D4FC9"># 1 &quot;a.h&quot; 1</font><br><br><font color="#2D4FC9">void f();</font><br><br><font color="#2D4FC9">extern int global;</font><br><br><br><br><font color="#FF4635">class A{};</font></i><br><br><font color="#2D4FC9"># 2 &quot;b.h&quot; 2</font><br><br><br><br><font color="#2D4FC9">extern A a;</font><br><br><font color="#2D4FC9"># 3 &quot;a.cpp&quot; 2</font><br><br><font color="#2D4FC9">int main(){</font><br><br><font color="#2D4FC9">A a;</font><br><br><font color="#2D4FC9">return 0;</font><br><br><font color="#2D4FC9">}</font></div><br><div><font color="#2D4FC9">可以看到由于b.h include了a.h因此class A{};出现了两次，怎么解决这个问题呢</font></div><br><div><font color="#2D4FC9">我们可以利用条件编译，如下</font></div><br><div>C:\Users\u\Desktop\a&gt;type a.h<br><br><font color="#2D4FC9">#ifndef _A_H_<br><br>#define _A_H_<br><br><br><br>void f();<br><br>extern int global;<br><br><br><br>class A{};<br><br>#endif</font></div><br><div><font color="#2D4FC9">这样在第一次编译a.h的时候由于之前没有a.h所以a.h会被编译，当接下来编译b.h的时候，b.h include了a.h也就是说a.h第二次出现，这样条件编译就会起作用，由于第一次确实没有a.h，而第二次已经有了a.h，条件编译的时候会把a.h拿掉，再来测试一下：</font></div><br><div>C:\Users\u\Desktop\a&gt;g++ a.cpp –save-temps</div><br><div>OK没问题</div><br><div>C:\Users\u\Desktop\a&gt;type a.ii<br><br># 1 &quot;a.cpp&quot;<br><br># 1 &quot;&lt;command-line&gt;&quot;<br><br># 1 &quot;a.cpp&quot;<br><br># 1 &quot;a.h&quot; 1<br><br><br><br><br><br><br><br>void f();<br><br>extern int global;<br><br><br><br>class A{};<br><br># 2 &quot;a.cpp&quot; 2<br><br># 1 &quot;b.h&quot; 1<br><br><i><br><br><br><br>extern A a;</i><br><br># 3 &quot;a.cpp&quot; 2<br><br>int main(){<br><br>A a;<br><br>return 0;<br><br>}</div><br><div><font color="#2D4FC9">因此 .</font></div><br><div><font color="#2D4FC9">.H中放声明而不放定义，是为了避免有多个.CPP去 include同一个.H的时候，link遇见重复定义的东西</font></div><br><div><font color="#2D4FC9">.H中使用标准头文件结构，是为了防止一个.CPP中include同一个.H多次的时候，出现那个.H中类class的声明被重复出现</font></div><br><div><font color="#2D4FC9">这是解决两个不同问题的手段。</font></div><br><div><font color="#2D4FC9">技巧：</font></div><br><div><font color="#2D4FC9">1.一个头文件中只放一个类的声明(a.H)；</font></div><br><div><font color="#2D4FC9">2.它对应的源代码用相同的前缀(a.cpp);</font></div><br><div><font color="#2D4FC9">3.头文件要用标准头文件围绕起来(#ifndef  #define #endif)</font></div><br><div><font color="#2D4FC9"><br></font></div><br><div><font color="#2D4FC9">So #include的内容只能是declaration，不能是definition，所以绝对不能include .CPP，因为.h中放的都是declaration，.CPP中是body放的都是definition，不能重复出现。</font></div><br></div><br></div><br><div><font color="#2D4FC9"><br></font></div><br><div><font color="#2D4FC9"><br></font></div><br><div>成员变量在哪里？他不在类里面，而是在类的每一个对象里面。</div><br><div><span style="color: rgb(68, 68, 68); font-family: 微软雅黑; font-size: 14px; text-align: left; white-space: pre-wrap; background-color: rgb(255, 255, 255);">成员变量就是全局变量么？</span></div><br><div><span style="color: rgb(68, 68, 68); font-size: 12px; text-align: left; background-color: rgb(255, 255, 255);">不是的，成员变量的生命周期和这个对象的生命周期是一样的，全局变量的生命周期和程序的生命周期是一致的。</span><span style="background-color: rgb(255, 255, 255); color: rgb(68, 68, 68); font-size: 12px; text-align: left;">两个的存储空间都不一样，全局变量的存储在静态存储区，成员变量存储在栈中。</span></div><br><div><span style="background-color: rgb(255, 255, 255); color: rgb(68, 68, 68); font-size: 12px; text-align: left;">比如说，</span><span style="background-color: rgb(255, 255, 255); color: rgb(68, 68, 68); font-size: 12px; text-align: left;">跟Person是一个定义一样（就是一个class），你是一个具体的人（就是一个具体的实例），你可以说每个Person都有一个心脏。但是实际上心脏只能存在于具体的一个人的体内，而不是存在于Person这个定义里。</span></div><br><div><span style="background-color: rgb(255, 255, 255); color: rgb(68, 68, 68); font-size: 12px; text-align: left;"><br></span></div><br><div><span style="background-color: rgb(255, 255, 255); color: rgb(68, 68, 68); font-size: 12px; text-align: left;"><br></span></div><br><div><span style="color: rgb(68, 68, 68); font-family: 微软雅黑; font-size: 14px; text-align: left; white-space: pre-wrap; background-color: rgb(255, 255, 255);">里面提到的成员变量i，对象a的i，和对象b中的i是否互相有影响？还是只是自己定义自己的i，可以不同值？</span></div><br><div><span style="color: rgb(68, 68, 68); font-family: 微软雅黑; font-size: 14px; text-align: left; white-space: pre-wrap; background-color: rgb(255, 255, 255);"><br></span></div><br></div><br>  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/C/">C++</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://liupei.net/2015/09/10/关于头文件/" data-title="关于头文件 | HPU NEW LIFE" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/09/10/程序员必须知道的10大基础实用算法及其讲解/" title="程序员必须知道的10大基础实用算法及其讲解">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  程序员必须知道的10大基础实用算法及其讲解</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/09/10/给初学编程者的忠告/"  title="给初学编程者的忠告">
+ <strong>NEXT:</strong><br/> 
+ <span>给初学编程者的忠告
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/C/" title="C++">C++<sup>9</sup></a></li>
+		
+			<li><a href="/categories/养生/" title="养生">养生<sup>1</sup></a></li>
+		
+			<li><a href="/categories/写作/" title="写作">写作<sup>17</sup></a></li>
+		
+			<li><a href="/categories/心灵/" title="心灵">心灵<sup>1</sup></a></li>
+		
+			<li><a href="/categories/算法/" title="算法">算法<sup>14</sup></a></li>
+		
+			<li><a href="/categories/阅读/" title="阅读">阅读<sup>9</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/C/" title="C++">C++<sup>6</sup></a></li>
+		
+			<li><a href="/tags/JJ/" title="JJ">JJ<sup>3</sup></a></li>
+		
+			<li><a href="/tags/MATLAB/" title="MATLAB">MATLAB<sup>2</sup></a></li>
+		
+			<li><a href="/tags/PC-MAC-LINUX/" title="PC/MAC/LINUX">PC/MAC/LINUX<sup>1</sup></a></li>
+		
+			<li><a href="/tags/PP/" title="PP">PP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/交流/" title="交流">交流<sup>9</sup></a></li>
+		
+			<li><a href="/tags/效率/" title="效率">效率<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">9</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>	  
+    </ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wizicer/iceman" target="_blank" title="Iceman">Iceman</a> © 2018 
+		
+		<a href="http://liupei.net" target="_blank" title="玄德公">玄德公</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+

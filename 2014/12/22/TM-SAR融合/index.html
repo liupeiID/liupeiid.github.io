@@ -1,0 +1,481 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>TM SAR融合 | HPU NEW LIFE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="玄德公">
+    
+    <meta name="description" content="原始文献
+于秀兰,钱国蕙,贾晓光. TM和SAR遥感图象特征层融合分类方法的研究[J]. 高技术通讯,1999,(6).
+
+于秀兰,钱国蕙. TM和SAR遥感图像的不同层次融合分类比较[J]. 遥感技术与应用,1999,(3).
+
+于秀兰,钱国蕙,周建林,贾晓光. 多光谱遥感图像BP网分类器学习样本">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="HPU NEW LIFE" title="HPU NEW LIFE"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="HPU NEW LIFE">HPU NEW LIFE</a></h1>
+				<h2 class="blog-motto">认准一个方向，持续的走，所有的努力都不会白费!</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/me">关于我</a></li>
+					
+						<li><a href="/now">NowNow</a></li>
+					
+					<li>
+					
+					<form class="search" action="//baidu.com/s" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="wd" autocomplete="off" maxlength="20" placeholder="搜索" />
+                        <input name=tn type=hidden value="bds">
+                        <input name=cl type=hidden value="3">
+                        <input name=ct type=hidden value="2097152">
+						<input type="hidden" name="si" value="liupei.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/22/TM-SAR融合/" title="TM SAR融合" itemprop="url">TM SAR融合</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://liupei.net" title="玄德公">玄德公</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2014-12-22T11:28:24.000Z" itemprop="datePublished">Dec 22 2014</time>
+    更新日期:<time datetime="2018-08-23T07:50:10.403Z" itemprop="dateModified">Aug 23 2018</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原始文献"><span class="toc-number">1.</span> <span class="toc-text">原始文献</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阅读进展"><span class="toc-number">2.</span> <span class="toc-text">阅读进展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关文献-（遥感-融合）模糊"><span class="toc-number">3.</span> <span class="toc-text">相关文献 （遥感+融合）模糊</span></a></li></ol>
+		</div>
+		
+		<h2 id="原始文献"><a href="#原始文献" class="headerlink" title="原始文献"></a>原始文献</h2><ol>
+<li><p>于秀兰,钱国蕙,贾晓光. TM和SAR遥感图象特征层融合分类方法的研究[J]. 高技术通讯,1999,(6).</p>
+</li>
+<li><p>于秀兰,钱国蕙. TM和SAR遥感图像的不同层次融合分类比较[J]. 遥感技术与应用,1999,(3).</p>
+</li>
+<li><p>于秀兰,钱国蕙,周建林,贾晓光. 多光谱遥感图像BP网分类器学习样本选取法的研究[J]. 红外与毫米波学报,1999,(6).</p>
+</li>
+<li><p>于秀兰,刘绍龙,钱国蕙,贾晓光. 一种多光谱和SAR遥感图象的配准方法[J]. 中国图象图形学报,2000,(2).</p>
+</li>
+<li><p>谭湘莹,于秀兰,钱国蕙. 一种大小窗口结合的SAR图像纹理特征分类方法[J]. 系统工程与电子技术,2000,(4).</p>
+</li>
+<li><p>于秀兰,钱国蕙,贾晓光. 多光谱和 SAR遥感图像融合分类的特征选取[J]. 红外与毫米波学报,2000,(6).</p>
+</li>
+</ol>
+<h2 id="阅读进展"><a href="#阅读进展" class="headerlink" title="阅读进展"></a>阅读进展</h2><ol start="2">
+<li><p><strong>参考文献</strong></p>
+<ul>
+<li>Anne.H1997  Texture Fusion and Feature Selection Applied to SAR Imagery</li>
+<li>robert.vaccaro2000  Exploiting Spatial Correlation Features for SAR Image Analysis</li>
+<li>xiaorong.Zhang2008  Spectral Clustering Ensemble Applied to SAR Image Segmentation</li>
+<li>stefan.uhlmann2014  Integrating Color Features in Polarimetric SAR Image Classification</li>
+</ul>
+</li>
+<li><p><strong>思路</strong></p>
+<ul>
+<li>用神经网络训练 Markov 模型 (模式识别 sergios 第四版) 查: 模式识别公开课</li>
+</ul>
+</li>
+</ol>
+<h2 id="相关文献-（遥感-融合）模糊"><a href="#相关文献-（遥感-融合）模糊" class="headerlink" title="相关文献 （遥感+融合）模糊"></a>相关文献 （遥感+融合）模糊</h2><ol>
+<li><a href="http://emuch.net/bbs/journal_cn.php?jid=355&amp;view=detail" target="_blank" rel="noopener"><strong>计算机工程</strong></a> <ul>
+<li>[1]杨彬,李旭东,晏磊,余优生. 航空遥感图像拼接算法及其精度评价[J]. 计算机工程,2014,(3).</li>
+<li>[2]李楠,霍宏,方涛. 自适应多尺度融合遥感图像分割方法[J]. 计算机工程,2012,(24).</li>
+<li>[3]崇元,徐晓刚. 基于BEMD与NMF的多源遥感图像融合[J]. 计算机工程,2012,(23).</li>
+<li>[4]温黎茗,彭力,徐红. 基于NSCT和PCNN的遥感图像融合算法[J]. 计算机工程,2012,(11).</li>
+<li>[5]刘成云,常发亮,刘春生,尹秉坤. 区域特征动态加权的IHS小波遥感图像融合[J]. 计算机工程,2012,(8).</li>
+<li>[6]曾宇燕,何建农. 基于区域小波统计特征的遥感图像融合方法[J]. 计算机工程,2011,(19).</li>
+<li>[7]余连生,文贡坚,李智勇. 基于SIDWT的遥感图像融合算法[J]. 计算机工程,2011,(17).</li>
+<li>[8]姚媛,胡根生,梁栋. 基于小波支持向量机的遥感影像融合[J]. 计算机工程,2011,(3).</li>
+<li>[9]马永聪,方涛. 基于遗传算法的高分辨率遥感分类器融合[J]. 计算机工程,2010,(20).</li>
+<li>[10]黎阳,尹球,胡勇. 遥感信息与知识共享平台的研究[J]. 计算机工程,2009,(15).</li>
+<li>[11]卢俊,张保明,黄薇,李二森. 基于GPU的遥感影像数据融合IHS变换算法[J]. 计算机工程,2009,(7).</li>
+<li>[12]韩波,康立山,陈毓屏,宋华珠. 基于遥感数据的空间目标融合预测模型[J]. 计算机工程,2006,(14).</li>
+<li>[13]万宁,吴飞. 基于ICA的全色影像和多光谱影像融合算法[J]. 计算机工程,2006,(7).</li>
+<li>[14]王贤敏,王乘,周建中,关泽群,吴沉寒. 一种新的遥感影像不同权限信息隐藏技术[J]. 计算机工程,2006,(1).</li>
+<li>[15]潘瑜春,王纪华,赵春江,冯仲科. 基于GIS和RS的应用分析系统集成研究[J]. 计算机工程,2005,(15).</li>
+<li>[16]杨旭红,敬忠良,李建勋. 基于影像局部光谱特性的遥感影像融合[J]. 计算机工程,2005,(11).</li>
+<li>[17]强赞霞,彭嘉雄. 基于融合及数学形态学的遥感图像目标检测[J]. 计算机工程,2005,(10).</li>
+<li>[18]赵志刚,陈学佺. 遥感图象分类的统计融合方法及性能分析[J]. 计算机工程,2000,(10).</li>
+</ul>
+</li>
+<li><a href="http://emuch.net/bbs/journal_cn.php?view=detail&amp;jid=358" target="_blank" rel="noopener"><strong>计算机工程与应用</strong></a><ul>
+<li>[1]李霞,朱倩,张昆,赵洋洋.不同地貌的TH-1遥感影像融合质量评价[J/OL].计算机工程与应用,,20141104 </li>
+<li>[2]王民,卞琼,高路. 高分辨率遥感卫星影像的河流提取方法研究[J]. 计算机工程与应用,2014,(18).</li>
+<li>[3]魏龙生, 罗大鹏.基于视觉注意机制的遥感图像显著性目标检测[J/OL].计算机工程与应用,20140216 </li>
+<li>[4]魏龙生,罗大鹏. 基于视觉注意机制的遥感图像显著性目标检测[J]. 计算机工程与应用,2014,(19).</li>
+<li>[5]刘婷,程建. 基于训练字典的遥感图像融合[J]. 计算机工程与应用,2013,(19).</li>
+<li>[6]周惠,高红民,田小敏. 基于小波变换一致性检测的遥感影像融合[J]. 计算机工程与应用,2012,(35).</li>
+<li>[7]吴飞,张德祥. Curvelet变换的多波段遥感图像融合研究[J]. 计算机工程与应用,2012,(32).</li>
+<li>[8]张世良,叶必雄,肖守中. 径向基函数网络与GIS/RS融合的UGB预测[J]. 计算机工程与应用,2012,(20).</li>
+<li>[9]王万同,刘鹏飞,韩志刚. 基于SIFT和NCC的多源遥感影像配准方法[J]. 计算机工程与应用,2012,(3).</li>
+<li>[10]杨建慧,白超. àtrous小波-NSCT遥感图像融合[J]. 计算机工程与应用,2013,(5).</li>
+<li>[11]倪翠,关泽群,王斌,朱素娟. 对马尔可夫随机场特征级图像融合的改进[J]. 计算机工程与应用,2011,(32).</li>
+<li>[12]温黎茗,彭力. 基于Sobel算子的小波包变换遥感图像融合算法[J]. 计算机工程与应用,2013,(3).</li>
+<li>[13]曾宇燕,何建农. 基于边缘统计特征的遥感图像融合改进方法[J]. 计算机工程与应用,2013,(3).</li>
+<li>[14]时海亮,汪远征,徐雅静,辛向军. 基于NSCT和LSSVM的Landsat ETM+图像土地覆盖分类[J]. 计算机工程与应用,2011,(28).</li>
+<li>[15]王振江,吴健,林方全. 一种结合快速灰度投影与SSDA的图像匹配方法[J]. 计算机工程与应用,2011,(33).</li>
+<li>[16]何同弟,李见为. 自适应对偶树复小波-Curvelet变换的遥感图像融合[J]. 计算机工程与应用,2011,(7).</li>
+<li>[17]吴连喜,饶月辉,高宇. 颜色保真的遥感图像融合方法的研究[J]. 计算机工程与应用,2011,(5).</li>
+<li>[18]柴勇,何友,曲长文. 迭代离散Shearlet变换异类源遥感图像融合[J]. 计算机工程与应用,2011,(3).</li>
+<li>[19]刘成云,陈振学,常发亮,尹秉坤. 基于特征量积与PCA的小波遥感图像融合[J]. 计算机工程与应用,2010,(33).</li>
+<li>[20]王万同,李锐. 基于IHS的高分辨率遥感影像自适应融合算法[J]. 计算机工程与应用,2010,(31).</li>
+<li>[21]邱宣,周则明,胡友彬. 应用邻域方差加权平均的curvelet变换融合[J]. 计算机工程与应用,2010,(9).</li>
+<li>[22]李璟旭. 遥感图像边缘特征提取与融合方法研究[J]. 计算机工程与应用,2009,(29).</li>
+<li>[23]李嘉,蓝秋萍,费立凡. 适用于遥感光谱数据集的高维索引技术研究[J]. 计算机工程与应用,2009,(21).</li>
+<li>[24]乔闹生,张黎,王先春. 遥感图像融合方法研究[J]. 计算机工程与应用,2009,(8).</li>
+<li>[25]王海江,王周龙,吴孟泉,王大鹏,崔青春. 基于多小波包变换的遥感影像融合[J]. 计算机工程与应用,2008,(15).</li>
+<li>[26]邵永社,李晶. 一种抑制SAR图像斑点噪声的图像融合方法[J]. 计算机工程与应用,2008,(6).</li>
+<li>[27]常化文,兰淑铎,陈春香. 基于小波系数叠加的遥感图像融合法[J]. 计算机工程与应用,2008,(3).</li>
+<li>[28]陈鹰,郭睿. 非负矩阵分解在遥感图像融合中的应用[J]. 计算机工程与应用,2007,(20).</li>
+<li>[29]何贵青,郝重阳. 一种基于特征量积的遥感图像融合方法[J]. 计算机工程与应用,2007,(3).</li>
+<li>[30]张易凡,何明一. 绝对值活跃度和区域相似度图像融合[J]. 计算机工程与应用,2006,(18).</li>
+<li>[31]沈景悦,吴秀清,刘严岩. 一种基于模糊融合的遥感图像目标识别方法[J]. 计算机工程与应用,2005,(16). <strong>20</strong></li>
+<li>[32]李晖晖,郭雷,刘航. 基于梯度选取规则的小波变换在图像融合中的研究[J]. 计算机工程与应用,2005,(12). <strong>33</strong></li>
+<li>[33]陈少辉,张秋文,王乘,周建中. 基于归一化方差的多分辨率图像融合方法[J]. 计算机工程与应用,2005,(3). <strong>18</strong></li>
+<li>[34]罗文斐,李岩,王小铭. 基于平滑渐进图像镶嵌的新算法研究[J]. 计算机工程与应用,2004,(36).  <strong>21</strong></li>
+<li>[35]吴连喜. 一种改进的遥感图像融合方法:LFF[J]. 计算机工程与应用,2004,(11).</li>
+<li>[36]李小春,陈鲸. 多进制小波变换的快速构造及在遥感图像融合中的实现[J]. 计算机工程与应用,2004,(7). <strong>24</strong></li>
+<li>[37]沈楠,曹计昌. 一种遥感图象自动配准方法[J]. 计算机工程与应用,2004,(3).</li>
+<li>[38]吴连喜. 遥感融合图像分类精度的研究[J]. 计算机工程与应用,2003,(36).</li>
+<li>[39]王海晖,彭嘉雄,吴巍. 基于证据理论的信息融合在图像分类中的应用[J]. 计算机工程与应用,2003,(33). <strong>23</strong></li>
+<li>[40]王海晖,彭嘉雄,吴巍,李峰. 多源遥感图像融合效果评价方法研究[J]. 计算机工程与应用,2003,(25). <strong>212</strong></li>
+<li>[41]张李勇,张飞舟. 基于GNSS/GIS/RS集成技术的铁路列车运营监控[J]. 计算机工程与应用,2003,(23).</li>
+<li>[42]赵敏,林行刚,凌福根,杜荆. 一种GIS、RS分布式多处理机模型的研究[J]. 计算机工程与应用,2002,(24).  </li>
+</ul>
+</li>
+<li><a href="http://emuch.net/bbs/journal_cn.php?view=detail&amp;jid=356" target="_blank" rel="noopener"><strong>计算机工程与科学</strong></a><ul>
+<li>[1]陈曦,梁方,王威. 基于对偶树复小波变换与PCA方法结合的图像变化检测算法研究[J]. 计算机工程与科学,2014,(8).</li>
+<li>[2]崔纪锋,杜红悦,张勇,邢春晓,薛本新. 基于细分部分整体关系建立影像文件目录体系[J]. 计算机工程与科学,2013,(6).</li>
+<li>[3]徐如林,周海芳,姜晶菲. 基于GPU的遥感图像IHS小波融合并行算法设计与实现[J]. 计算机工程与科学,2012,(8).</li>
+<li>[4]王立民,雷琳,邹焕新. 基于D-S证据理论的遥感图像融合变化检测方法[J]. 计算机工程与科学,2011,(7).</li>
+<li>[5]程环环,王润生. 利用贝叶斯网络融合空间上下文的高分辨遥感图像分类[J]. 计算机工程与科学,2011,(1).</li>
+<li>[6]张灿峰,周海芳. 像素级遥感图像融合并行算法研究与实现[J]. 计算机工程与科学,2010,(9).</li>
+<li>[7]王攀峰,杜云飞,周海芳,杨学军. 基于复小波变换的遥感图像并行融合算法[J]. 计算机工程与科学,2008,(3). <strong>12</strong></li>
+<li>[8]王攀峰,杜云飞,周海芳,贾佳,杨学军. 遥感图像像素级融合方法的建模与分析[J]. 计算机工程与科学,2007,(11).</li>
+<li>[9]李弼程,魏俊,彭天强. 遥感影象融合效果的客观分析与评价[J]. 计算机工程与科学,2004,(1). <strong>114</strong></li>
+<li>[10]裴晓宁,张建宝,赵宗涛. 多源遥感图象融合及应用[J]. 计算机工程与科学,2001,(6). <strong>16</strong></li>
+</ul>
+</li>
+</ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/阅读/">阅读</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://liupei.net/2014/12/22/TM-SAR融合/" data-title="TM SAR融合 | HPU NEW LIFE" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2014/12/23/遥感-多分类器集成/" title="遥感-多分类器集成">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  遥感-多分类器集成</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/21/mac-ndvi/"  title="mac-ndvi">
+ <strong>NEXT:</strong><br/> 
+ <span>mac-ndvi
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原始文献"><span class="toc-number">1.</span> <span class="toc-text">原始文献</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#阅读进展"><span class="toc-number">2.</span> <span class="toc-text">阅读进展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关文献-（遥感-融合）模糊"><span class="toc-number">3.</span> <span class="toc-text">相关文献 （遥感+融合）模糊</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/C/" title="C++">C++<sup>9</sup></a></li>
+		
+			<li><a href="/categories/养生/" title="养生">养生<sup>1</sup></a></li>
+		
+			<li><a href="/categories/写作/" title="写作">写作<sup>17</sup></a></li>
+		
+			<li><a href="/categories/心灵/" title="心灵">心灵<sup>1</sup></a></li>
+		
+			<li><a href="/categories/算法/" title="算法">算法<sup>14</sup></a></li>
+		
+			<li><a href="/categories/阅读/" title="阅读">阅读<sup>9</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/C/" title="C++">C++<sup>6</sup></a></li>
+		
+			<li><a href="/tags/JJ/" title="JJ">JJ<sup>3</sup></a></li>
+		
+			<li><a href="/tags/MATLAB/" title="MATLAB">MATLAB<sup>2</sup></a></li>
+		
+			<li><a href="/tags/PC-MAC-LINUX/" title="PC/MAC/LINUX">PC/MAC/LINUX<sup>1</sup></a></li>
+		
+			<li><a href="/tags/PP/" title="PP">PP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/交流/" title="交流">交流<sup>9</sup></a></li>
+		
+			<li><a href="/tags/效率/" title="效率">效率<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">9</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>	  
+    </ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wizicer/iceman" target="_blank" title="Iceman">Iceman</a> © 2018 
+		
+		<a href="http://liupei.net" target="_blank" title="玄德公">玄德公</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+

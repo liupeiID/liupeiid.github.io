@@ -1,0 +1,366 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>VC++四种程序启动画面的制作方法 | HPU NEW LIFE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="玄德公">
+    
+    <meta name="description" content="使用启动画面一是可以减少等待程序加载过程中的枯燥感（尤其是一些大型程序）；二是可以用来显示软件名称和版权等提示信息。怎样使用VC++制作应用程序的启动画面呢？本文提供四种方法，前三种适用于基于文档的应用程序，第四种适用于基于对话框的应用程序。  1.利用组件库中的Splash Screen组件实现 ">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="HPU NEW LIFE" title="HPU NEW LIFE"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="HPU NEW LIFE">HPU NEW LIFE</a></h1>
+				<h2 class="blog-motto">认准一个方向，持续的走，所有的努力都不会白费!</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/me">关于我</a></li>
+					
+						<li><a href="/now">NowNow</a></li>
+					
+					<li>
+					
+					<form class="search" action="//baidu.com/s" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="wd" autocomplete="off" maxlength="20" placeholder="搜索" />
+                        <input name=tn type=hidden value="bds">
+                        <input name=cl type=hidden value="3">
+                        <input name=ct type=hidden value="2097152">
+						<input type="hidden" name="si" value="liupei.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/15/VC-四种程序启动画面的制作方法/" title="VC++四种程序启动画面的制作方法" itemprop="url">VC++四种程序启动画面的制作方法</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://liupei.net" title="玄德公">玄德公</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2015-10-15T11:22:47.000Z" itemprop="datePublished">Oct 15 2015</time>
+    更新日期:<time datetime="2018-08-23T07:50:10.432Z" itemprop="dateModified">Aug 23 2018</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+		</div>
+		
+		<body><br><a name="1960"><br><br><div><br><div style="word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break: after-white-space;"><br>使用启动画面一是可以减少等待程序加载过程中的枯燥感（尤其是一些大型程序）；二是可以用来显示软件名称和版权等提示信息。怎样使用VC++制作应用程序的启动画面呢？本文提供四种方法，前三种适用于基于文档的应用程序，第四种适用于基于对话框的应用程序。<br><br><br>  1.利用组件库中的Splash Screen组件实现<br><br><br>  (1)用Photoshop等制作启动画面图像，保存为bmp格式。<br><br><br>  (2)用Appwizard建一个基于单文档的工程Splash。<br><br><br>  (3)在资源中插入位图资源<br><br><br>  打开VC++的资源编辑器，用鼠标右键单击Resources文件夹，选择Import命令，插入所制作的位图。如果位图超过256色，VC会弹出一个对话框，提示位图已经插入但不能在位图编辑器中显示，确定即可。将位图ID改为IDB_SPLASH。<br><br><br>  (4)添加Splash Screen控件<br><br><br>  ①选择菜单“project”/“Add To Project”/“Conponents and Controls”打开对话框，在列表框中双击“Visual C++ Conponents”选项，选择“Splash Screen”控件，然后单击“Insert”。<br><br><br>  ②确认或修改类名和位图资源ID，单击OK确认。<br><br><br>  ③编译、连接，漂亮的启动画面就显示出来了。<br><br><br>  (5)如果需要改变启动画面的停留时间，就修改SetTimer()函数的第二个参数，默认是750 毫秒。该函数所在位置：<br><br><br>int CSplashWnd::OnCreate(LPCREATESTRUCT lpCreateStruct)<br><br>{<br><br>…<br><br>   // Set a timer to destroy the splash screen.<br><br>   SetTimer(1, 750, NULL); //修改第二个参数以调整画面停留时间<br><br>   return 0;<br><br>}<br><br><br><br><br>2.利用无模式对话框显示启动画面<br><br><br>(1)用Appwizard建一个基于单文档的工程Splash。<br><br><br>  (2)导入用作启动画面的图片，更改ID为IDB_SPLASH。<br><br><br>  (3)新建一个对话框，在其中添加启动画面。<br><br><br>  在资源中新建一个对话框，创建对话框类CSplashDlg。在对话框中添加一个Picture控件，打开其“Properties”对话框，选General，在Type下拉列表中选择Bitmap，在Image下拉列表中选前面导入的位图资源ID值：IDB_SPLASH。<br><br><br>  (4)修改对话框的显示效果<br><br><br>  ①调整对话框大小，去掉两个自动生成的按钮，并在“Properties”的“Styles”页中去掉对Title bar的选取；<br><br><br>  ②选中图像，调整大小使之适应对话框的可编辑区，修改其“Properties”的“Styles”<br><br><br>  使之居中。<br><br><br>  (5)在CMainFrame类的OnCreate()函数中添加创建、显示并销毁无模式对话框的代码。<br><br><br>#include “SplashDlg.h” //加到MainFrm.cpp文件的头文件调用部位<br><br>int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)<br><br>{<br><br>CSplashDlg <em>dlg = new CSplashDlg(this);<br><br>dlg-&gt;Create(CSplashDlg::IDD,this); //创建对话框<br><br>dlg-&gt;ShowWindow(SW_SHOW); //显示对话框<br><br>dlg-&gt;UpdateWindow();<br><br>Sleep(2000); //画面显示停留时间，单位为毫秒<br><br>…<br><br>dlg-&gt;DestroyWindow(); //销毁对话框<br><br>return 0;<br><br>}<br><br><br><br><br>  3.通过发送消息显示和销毁启动画面<br><br><br>  ①重复方法二的步骤1至步骤4。<br><br><br>  ②使用Class Wizard为CMainFrame类添加消息响应函数WM_TIMER。<br><br><br>  ③修改代码，通过发送WM_TIMER消息启动和销毁启动画面<br><br><br>  1）定义对话框类的变量<br><br><br>在MainFrm.h文件头部添加#include &quot;SplashDlg.h&quot;，并在CMainFram类的定义中加上公用变量CSplashDlg </em>Splash。<br><br><br>  2）添加计时器消息相应函数代码<br><br><br>void CMainFrame::OnTimer(UINT nIDEvent)<br><br>{<br><br>if(Splash-&gt;IsWindowVisible()){<br><br>Splash-&gt;SetActiveWindow(); //把启动画面设置为当前活动窗口<br><br>Splash-&gt;UpdateWindow();<br><br>Sleep(2000); //修改此处可更改画面显示时间<br><br>Splash-&gt;SendMessage(WM_CLOSE); //关闭对话框<br><br>}<br><br>else{<br><br>SetActiveWindow();<br><br>KillTimer(1) ; //清除WM_TIMER事件<br><br>}<br><br>}<br><br><br><br><br>  3）修改框架生成函数OnCreate()<br><br><br>int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)<br><br>{<br><br>SetTimer(1,0,NULL); //添加ID为1的WM_TIMER事件<br><br>Splash=new CSplashDlg();<br><br>Splash-&gt;Create(IDD_DIALOG1);<br><br>Splash-&gt;ShowWindow(SW_SHOW);<br><br>…<br><br>}<br><br><br><br><br>  4.制作基于对话框的应用程序启动画面<br><br><br>  以上几种方法都不能给基于对话框的应用程序做启动画面，下面介绍一种方法给基于对话框的应用程序做启动画面。基于对话框的应用程序没有主框架，因此不能采用前面几种方法制作启动画面。不过我们可以把方法一建立起的启动画面文件移植过来，然后，对程序进行一些修改。<br><br><br>  (1)参照方法一建立基于单文档的工程Splash。<br><br><br>  (2)建立基于对话框的工程Cover。<br><br><br>  (3)文件移植<br><br><br>  ①将Splash1.cpp 和Splash1.h 两个文件从方法一建立的Splash工程拷贝到Cover工程中，并且分别加入到Source Files和Header Files中；<br><br><br>  ②导入位图文件到工程的资源中，改ID为IDB_SPLASH。<br><br><br><br><br>  (4)修改代码，实现启动画面的调用<br><br><br>  ①添加CCoverApp 的InitInstance() 函数代码<br><br><br>#include &quot;Splash1.h&quot; //加在Cover.cpp文件的头文件调用部位<br><br>BOOL CCoverApp::InitInstance()<br><br>{<br><br>CCommandLineInfo cmdInfo;<br><br>ParseCommandLine(cmdInfo);<br><br>CSplashWnd::EnableSplashScreen(cmdInfo.m_bShowSplash);<br><br>…<br><br>}<br><br><br><br><br>  ②使用ClassWizard 添加OnCreate() 函数到对话框类CCoverDlg中，并修改代码#include &quot;Splash1.h&quot; //加在CoverDlg.cpp文件的头文件调用部位<br><br><br>int CCoverDlg::OnCreate(LPCREATESTRUCT lpCreateStruct)<br><br>{<br><br>…<br><br>CSplashWnd::ShowSplashScreen(this); //显示启动画面<br><br>…<br><br>}<br><br><br><br><br>  说明：启动画面停留时间的修改同方法一。<br><br><br>  5.结束语<br><br><br>  正如前面提过的，运用好启动画面可以给使用者留下一个强烈的印象，起到很好的宣传作用，以上程序均在Visual C++ 6.0、Windows2000调试通过。<br><br><br>  参考文献：<br><br><br>  1．胡哲源. 掌握Visual C++—MFC程序设计与剖析. 清华大学出版社，2001<br></div><br></div></a></body>  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/C/">C++</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://liupei.net/2015/10/15/VC-四种程序启动画面的制作方法/" data-title="VC++四种程序启动画面的制作方法 | HPU NEW LIFE" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/10/15/Matlab2010b安装好以桌面没有快捷方式，开始菜单也没有/" title="Matlab2010b安装好以桌面没有快捷方式，开始菜单也没有">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Matlab2010b安装好以桌面没有快捷方式，开始菜单也没有</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/10/15/VC6-0-生成的EXE，怎么查找这个文件依赖的DLL的文件/"  title="VC6.0++生成的EXE，怎么查找这个文件依赖的DLL的文件">
+ <strong>NEXT:</strong><br/> 
+ <span>VC6.0++生成的EXE，怎么查找这个文件依赖的DLL的文件
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/C/" title="C++">C++<sup>9</sup></a></li>
+		
+			<li><a href="/categories/养生/" title="养生">养生<sup>1</sup></a></li>
+		
+			<li><a href="/categories/写作/" title="写作">写作<sup>17</sup></a></li>
+		
+			<li><a href="/categories/心灵/" title="心灵">心灵<sup>1</sup></a></li>
+		
+			<li><a href="/categories/算法/" title="算法">算法<sup>14</sup></a></li>
+		
+			<li><a href="/categories/阅读/" title="阅读">阅读<sup>9</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/C/" title="C++">C++<sup>6</sup></a></li>
+		
+			<li><a href="/tags/JJ/" title="JJ">JJ<sup>3</sup></a></li>
+		
+			<li><a href="/tags/MATLAB/" title="MATLAB">MATLAB<sup>2</sup></a></li>
+		
+			<li><a href="/tags/PC-MAC-LINUX/" title="PC/MAC/LINUX">PC/MAC/LINUX<sup>1</sup></a></li>
+		
+			<li><a href="/tags/PP/" title="PP">PP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/交流/" title="交流">交流<sup>9</sup></a></li>
+		
+			<li><a href="/tags/效率/" title="效率">效率<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">9</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>	  
+    </ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wizicer/iceman" target="_blank" title="Iceman">Iceman</a> © 2018 
+		
+		<a href="http://liupei.net" target="_blank" title="玄德公">玄德公</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+
