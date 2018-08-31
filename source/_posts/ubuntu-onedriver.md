@@ -43,11 +43,15 @@ The callback URL is the URL where the sign-in page finally goes blank.
 
 Please visit the sign-in URL in your browser:
 
-https://login.live.com/oauth20_authorize.srf?client_id=000000004010C916&scope=wl.skydrive+wl.skydrive_update+wl.offline_access&response_type=code&redirect_uri=https%3A%2F%2Flogin.live.com%2Foauth20_desktop.srf&display=touch&locale=en
+https://login.live.com/oauth20_authorize.srf?client_id=000000004010C916&scope=wl.skydrive+wl.
+skydrive_update+wl.offline_access&response_type=code&redirect_uri=https%3A%2F%2Flogin.live.
+com%2Foauth20_desktop.srf&display=touch&locale=en
 
 Please paste the callback URL:
 https://login.live.com/oauth20_desktop.srf?code=Mf922a696-9e63-551f-98c5-61c9d1c4c168&lc=1033
-/usr/lib/python3/dist-packages/urllib3/connectionpool.py:860: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+/usr/lib/python3/dist-packages/urllib3/connectionpool.py:860: InsecureRequestWarning: 
+Unverified HTTPS request is being made. Adding certificate verification is strongly advised.
+See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
   InsecureRequestWarning)
 [2018-07-20 20:31:04,635] DEBUG: MainThread: config saved.
 onedrive-d has been successfully authorized.
