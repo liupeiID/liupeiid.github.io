@@ -1,0 +1,403 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>遥感数据产品分级 | HPU NEW LIFE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="bear&#39;s hus">
+    
+    <meta name="description" content="1986年，美国航空航天局（NASA）定义了一系列数据处理”级别”，用以区分源于其地球观测系统（EOS）卫星获取的影像生成的标准数据产品。给定任何数据产品，我们可以根据其级别来判断其在生产过程中都经过了那些处理流程，这样能够使得用户知道如何更恰当地去使用它。同时，NASA对每个级别做出了简要定义：
+">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="HPU NEW LIFE" title="HPU NEW LIFE"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="HPU NEW LIFE">HPU NEW LIFE</a></h1>
+				<h2 class="blog-motto">if you live your life the right way, the karma will take care of itself, and the dreams will come to you.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/me">关于我</a></li>
+					
+					<li>
+					
+					<form class="search" action="//baidu.com/s" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="wd" autocomplete="off" maxlength="20" placeholder="搜索" />
+                        <input name=tn type=hidden value="bds">
+                        <input name=cl type=hidden value="3">
+                        <input name=ct type=hidden value="2097152">
+						<input type="hidden" name="si" value="liupei.net">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/04/16/遥感数据产品分级/" title="遥感数据产品分级" itemprop="url">遥感数据产品分级</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://liupei.net" title="bear&#39;s hus">bear&#39;s hus</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2019-04-16T07:42:56.000Z" itemprop="datePublished">Apr 16 2019</time>
+    更新日期:<time datetime="2019-04-16T08:08:16.357Z" itemprop="dateModified">Apr 16 2019</time>
+    
+  </p>
+</header>
+
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+		</div>
+		
+		<p>   1986年，美国航空航天局（NASA）定义了一系列数据处理”级别”，用以区分源于其地球观测系统（EOS）卫星获取的影像生成的标准数据产品。给定任何数据产品，我们可以根据其级别来判断其在生产过程中都经过了那些处理流程，这样能够使得用户知道如何更恰当地去使用它。同时，NASA对每个级别做出了简要定义：</p>
+<p>  0级：经数据重构，未进行任何处理的原始数据；所有的通信信息（比如：同步帧、通信头和重复数据）被移除。</p>
+<p>  1A级：经数据重构，具有时间参考、辅助信息（包括辐射、几何校正系数等）以及地理坐标参数等<br>（如：平台星历等，并没有应用于0级产品）的未进行任何处理的原始数据。</p>
+<p>  1B级：在1A级产品的基础上处理至传感器单元（并不是所有数据都有L1B级数据）。</p>
+<p>  2级: 与1级数据具有相同分辨率和位置的地球物理参量数据产品。</p>
+<p>  3级: 投影至统一时空格网尺度，通常具有一定完整性和一致性的数据产品。</p>
+<p>  4级: 模型输出结果或从低级数据分析得到的结果。</p>
+<p>参考地址：<a href="http://science.nasa.gov/earth-science/earth-science-data/data-processing-levels-for-eosdis-data-products/" target="_blank" rel="noopener">http://science.nasa.gov/earth-science/earth-science-data/data-processing-levels-for-eosdis-data-products/</a></p>
+<p>  该分级体系的一个重要方面是它的每一级是积累的，新的一个级别是由其下一级别生成同时它也是上一级产品的输入数据。</p>
+<p>  0级数据基本上是原始的、未经任何处理的仪器和传感器数据。虽然它是基本的数据级别，但我们通常不会使用它，对传感器本身准确性和敏感性比较感兴趣的人将会是它的用户。0级数据的主要作用是作为数据处理链中的原始数据被用来生成更高级别的数据产品。1级数据可以恢复为0级，同时1级数据也是生成更高级别数据的基础。</p>
+<p>  2级数据可直接用于大多数的科学研究。相对于1级数据来说，2级数据可能由于某些原因（比如：在空间尺度或光谱范围等方面做了缩减）要小一些。3级产品可能会更小，以便其更容易被使用，同时规则的空间和时间组织使得这些数据更容易与不同数据源的数据结合使用。一般地，随着处理技术的改进，数据集本身将会变得更小，但其在科学应用中的价值和效用将会变的更大。</p>
+<p> 对于遥感影像预处理类型和程度来说，采用统一的处理级别体系来描述其优点变得清晰。这种方法似乎已经发展到被普遍采用，尽管有许多不同情况存在。通常情况下，可使用下述定义来描述不同数据级别：</p>
+<p>  0级：传感器收集到的原始数据。0级数据并不是十分有用，除非你的兴趣点或研究内容是传感器本身。</p>
+<p>  1A级：均衡化辐射校正的数据产品。通过不同检测器的均衡功能对影响传感器的变化进行校正。<br>包括了将DN值装换为辐射亮度值的绝对校正系数。</p>
+<p>  1B级：该步主要用于对一些传感器的几何畸变进行校正。对没有几何畸变的传感器来说，这一步是不需要的。<br>同时，需要注意的是，1B级数据不可恢复为0级数据。</p>
+<p>  2A级：经过系统几何校正的数据。该级别数据名义上具有地理参考，但其精度并不高。</p>
+<p>  2B级：为了提高影像的空间位置精度，需要考虑到用户输入信息，借助具有准确位置信息的地面控制点来对<br>影像进行位置校准。<br>经过该处理的影像是具有原始空间分辨率且空间位置准确的数据产品（局部地形起伏较大的区域除外）。</p>
+<p>  3级：经正射校正的数据产品。对于具有大量地势起伏（比如：多山区域）的地区，要获取更准确的空间位置，需要进一步的校正来消除由于地形起伏、传感器倾斜等导致的几何误差。对同一传感器来说，其3级数据是同一尺度的，适用于大范围的栅格尺度，比如：镶嵌。</p>
+<p>   值得注意的是，由于各种原因，不同的系统具有不同的侧重点，被赋予不同的任务，因而具有不同的数据产品级别。比如：Landsat7采用校正至传感器单元的L1G级别作为其产品分发级别；DG公司则采用一种扩展系统来对产品级别进行分类，从”基础”级1B开始，到”标准”2A级，再到3F级（具有1:5000地图精度的正射校正影像）和Stereo OR2A（Ortho-ready Standard）级（立体像对，用户可以根据自己的需求和流程进行正射校正）。</p>
+<p>中国资源卫星应用中心公布的卫星标准数据产品级别如下：</p>
+<p>   卫星标准数据产品根据处理程度不同，分为1A级、1C级、2级、2A级和2C级产品，各级产品主要说明如下：</p>
+<p>   1A级（预处理级辐射校正影像产品）：经数据解析、均一化辐射校正、去噪、MTFC、CCD拼接、波段配准等处理的影像数据；并提供卫星直传姿轨数据生产的RPC文件。</p>
+<p>   1C级（高精度预处理级辐射校正影像产品）：经数据解析、均一化辐射校正、去噪、MTFC、CCD拼接、波段配准等处理的影像数据；并提供整轨精化的姿轨数据生产的RPC文件。</p>
+<p>   2级（系统级几何校正影像产品）：经相对辐射校正、系统级几何校正后的影像产品。</p>
+<p>   2A级（预处理级几何校正影像产品）：1A级数据经几何校正、地图投影生成的影像产品。</p>
+<p>   2C级（高精度预处理级几何校正影像产品）：1C级数据经几何校正、地图投影生成的影像产品。</p>
+<p>参考地址：<a href="http://218.247.138.121/DSSPlatform/content/contentinfo.html?conid=86576&amp;langtype=ZH" target="_blank" rel="noopener">http://218.247.138.121/DSSPlatform/content/contentinfo.html?conid=86576&amp;langtype=ZH</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/RSfoundamental/">RSfoundamental</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/RS/">RS</a>
+</div>
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://liupei.net/2019/04/16/遥感数据产品分级/" data-title="遥感数据产品分级 | HPU NEW LIFE" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/04/16/MODIS三级数据土地覆盖类型产品/" title="MODIS三级数据土地覆盖类型产品">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  MODIS三级数据土地覆盖类型产品</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2019/03/03/深度学习综述/"  title="深度学习综述">
+ <strong>NEXT:</strong><br/> 
+ <span>深度学习综述
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+			<li><a href="/categories/C/" title="C++">C++<sup>9</sup></a></li>
+		
+			<li><a href="/categories/RS/" title="RS">RS<sup>2</sup></a></li>
+		
+			<li><a href="/categories/养生/" title="养生">养生<sup>1</sup></a></li>
+		
+			<li><a href="/categories/写作/" title="写作">写作<sup>17</sup></a></li>
+		
+			<li><a href="/categories/心灵/" title="心灵">心灵<sup>1</sup></a></li>
+		
+			<li><a href="/categories/算法/" title="算法">算法<sup>14</sup></a></li>
+		
+			<li><a href="/categories/阅读/" title="阅读">阅读<sup>9</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/C/" title="C++">C++<sup>6</sup></a></li>
+		
+			<li><a href="/tags/JJ/" title="JJ">JJ<sup>3</sup></a></li>
+		
+			<li><a href="/tags/MATLAB/" title="MATLAB">MATLAB<sup>2</sup></a></li>
+		
+			<li><a href="/tags/PC-MAC-LINUX/" title="PC/MAC/LINUX">PC/MAC/LINUX<sup>1</sup></a></li>
+		
+			<li><a href="/tags/PP/" title="PP">PP<sup>1</sup></a></li>
+		
+			<li><a href="/tags/RSfoundamental/" title="RSfoundamental">RSfoundamental<sup>2</sup></a></li>
+		
+			<li><a href="/tags/linux/" title="linux">linux<sup>1</sup></a></li>
+		
+			<li><a href="/tags/交流/" title="交流">交流<sup>9</sup></a></li>
+		
+			<li><a href="/tags/效率/" title="效率">效率<sup>1</sup></a></li>
+		
+			<li><a href="/tags/机器学习/" title="机器学习">机器学习<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a><span class="archive-list-count">9</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="https://www.edgehill.ac.uk/geography/staff/professor-paul-aplin/" target="_blank" title="Paul Aplin">Paul Aplin</a></li>
+      <li><a href="http://dxy.hhu.edu.cn/2017/0412/c6458a93903/page.htm" target="_blank" title="苏教授">苏红军</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>
+      <li><a href="http://gis.nju.edu.cn/rs.asp?ID=49&type_1=57" target="_blank" title="杜教授">恩师</a></li>	  
+    </ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wizicer/iceman" target="_blank" title="Iceman">Iceman</a> © 2019 
+		
+		<a href="http://liupei.net" target="_blank" title="bear&#39;s hus">bear&#39;s hus</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+
